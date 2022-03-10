@@ -1,13 +1,30 @@
-import logo from './logo.svg';
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from 'react';
+// import logo from './logo.svg';
 import './App.css';
+import apiConnect from './service/apiConnect';
 
 function App() {
+  const [types, setTypes] = useState();
+  const [pokemon, setPokemon] = useState([]);
+  const connect = apiConnect;
+
+  useEffect(async () => {
+    const getAll = await connect.getAll();
+    setPokemon(getAll.results);
+  }, []);
+  console.log(pokemon);
+
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit
+          {' '}
+          <code>src/App.js</code>
+          {' '}
+          and save to reload.
         </p>
         <a
           className="App-link"
@@ -17,7 +34,9 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
+
+      {pokemon.map((item) => <p>{item.name}</p>)}
     </div>
   );
 }
