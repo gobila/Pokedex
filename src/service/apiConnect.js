@@ -13,6 +13,12 @@ const apiConnect = {
       .then((data) => data.json());
     return response;
   },
+  async getPokemon(pokemon) {
+    const url = `${urlBase}pokemon/${pokemon}`;
+    const response = await fetch(url)
+      .then((data) => data.json());
+    return response;
+  },
 };
 
 export default apiConnect;

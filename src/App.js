@@ -6,14 +6,21 @@ import apiConnect from './service/apiConnect';
 
 function App() {
   const [types, setTypes] = useState();
-  const [pokemon, setPokemon] = useState([]);
+  const [pokemonData, setPokemonData] = useState([]);
+  const [pokemonList, setPokemonList] = useState([]);
   const connect = apiConnect;
+
+  async function getPokemon() {
+    const list = pokemonList.map(async (item) => connect.getPokemon(item.name));
+    const results = await Promise.all(list);
+    setPokemonData(results);
+  }
 
   useEffect(async () => {
     const getAll = await connect.getAll();
-    setPokemon(getAll.results);
+    setPokemonList(getAll.results);
+    getPokemon();
   }, []);
-  console.log(pokemon);
 
   return (
     <div className="App">
@@ -36,7 +43,14 @@ function App() {
         </a>
       </header> */}
 
-      {pokemon.map((item) => <p>{item.name}</p>)}
+      {pokemonData.map((item) => (
+        <div>
+          <p>{item.name}</p>
+          <p>{item.types.map((i) => <p>{i.type.name}</p>)}</p>
+          <p>{item.order}</p>
+        </div>
+      ))}
+      {/* {pokemon.name} */}
     </div>
   );
 }
