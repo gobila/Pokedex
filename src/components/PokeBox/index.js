@@ -22,8 +22,11 @@ export default function PokeBox({ pokemon }) {
 
   return (
     <div className={`pokebox bd-${pokeTypes[0].type.name}`}>
-
-      <p className={`poppins-s12 color-${pokeTypes[0].type.name}`}>{mask + id}</p>
+      <div className="pokebox-ndex">
+        <p className={`poppins-s12 color-${pokeTypes[0].type.name}`}>
+          {mask + id}
+        </p>
+      </div>
 
       <img
         src={pokeImg}

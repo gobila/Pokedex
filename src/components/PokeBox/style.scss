@@ -7,6 +7,13 @@
   margin: 8px;
   border: 2px solid;
   border-radius: 8px;
+  &-ndex{
+    text-align: right;
+    padding: 4px 8px;
+    p{
+      margin: 0px;
+    }
+  }
   &-name{
     padding: 8px;
     p{
