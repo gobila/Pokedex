@@ -1,16 +1,36 @@
-import React from 'react';
+/* eslint-disable react/jsx-one-expression-per-line */
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
 export default function PokeBox({ pokemon }) {
+  const [mask, setMask] = useState();
+  const { id } = pokemon;
+  const { name } = pokemon;
+  const pokeImg = pokemon.sprites.front_default;
+  const pokeTypes = pokemon.types;
+
+  useEffect(() => {
+    if (id <= 99) {
+      if (id < 10) {
+        return setMask('#00');
+      }
+      return setMask('#0');
+    }
+    return setMask('#');
+  }, [name]);
+
   return (
-    <div className={`pokebox bd-${pokemon.types[0].type.name}`}>
+    <div className={`pokebox bd-${pokeTypes[0].type.name}`}>
+
+      <p className={`poppins-s12 color-${pokeTypes[0].type.name}`}>{mask + id}</p>
+
       <img
-        src={pokemon.sprites.front_default}
-        alt={`${pokemon.name} srite`}
+        src={pokeImg}
+        alt={`${name} srite`}
       />
       <div className={`pokebox-name type-${pokemon.types[0].type.name}`}>
-        <p className="poppins-s16">{pokemon.name}</p>
+        <p className="poppins-s16">{name}</p>
       </div>
     </div>
   );

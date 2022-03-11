@@ -139,3 +139,59 @@ $backgound:#F7F7F7;
     border-color: $dragon-color;
   }
 }
+@mixin color4type {
+  .color-rock{
+    color: $rock-color;
+  }
+  .color-ghost{
+    color: $ghost-color;
+  }
+  .color-steel{
+    color: $steel-color;
+  }
+  .color-water{
+    color: $water-color;
+  }
+  .color-grass{
+    color: $grass-color;
+  }
+  .color-psychic{
+    color: $psychic-color;
+  }
+  .color-ice{
+    color: $ice-color;
+  }
+  .color-dark{
+    color: $dark-color;
+  }
+  .color-fairy{
+    color: $fairy-color;
+  }
+  .color-normal{
+    color: $normal-color;
+  }
+  .color-fighting{
+    color: $fighting-color;
+  }
+  .color-flying{
+    color: $flying-color;
+  }
+  .color-poison{
+    color: $poison-color;
+  }
+  .color-ground{
+    color: $ground-color;
+  }
+  .color-bug{
+    color: $bug-color;
+  }
+  .color-fire{
+    color: $fire-color;
+  }
+  .color-eletric{
+    color: $eletric-color;
+  }
+  .color-dragon{
+    color: $dragon-color;
+  }
+}

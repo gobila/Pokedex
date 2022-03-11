@@ -10,9 +10,11 @@
   &-name{
     padding: 8px;
     p{
-      margin: 0px
+      margin: 0px;
+      color: $white;
     };
   }
 }
 @include types;
 @include border4type;
+@include color4type;

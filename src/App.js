@@ -39,14 +39,14 @@ function App() {
   }, [isLoading]);
   return (
     <div className="App">
-
-      {pokemonData.map((item) => (
-        <PokeBox
-          key={item.id}
-          pokemon={item}
-        />
-      ))}
-      {/* {pokemon.name} */}
+      <div className="AppContainer">
+        {pokemonData.map((item) => (
+          <PokeBox
+            key={item.id}
+            pokemon={item}
+          />
+        ))}
+      </div>
     </div>
   );
 }
