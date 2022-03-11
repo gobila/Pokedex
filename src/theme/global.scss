@@ -1,0 +1,8 @@
+@import './typography.scss';
+@import './colors.scss';
+html{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+  background-color: $backgound;
+}
+@include Typography;

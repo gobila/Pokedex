@@ -1,0 +1,40 @@
+$size-8: 8px;
+$size-10: 10px;
+$size-12: 12px;
+$size-14: 14px;
+$size-24: 24px;
+
+$line-12: 12px;
+$line-16: 16px;
+$line-32: 32px;
+
+@mixin Typography {
+  .regular{
+    font-weight: 400;
+  }
+  .bold{
+    font-weight: bold;
+  }
+  .poppins{
+    &-s8{
+      font-size: $size-8;
+      line-height: $line-12;
+    }
+    &-s10{
+      font-size: $size-10;
+      line-height: $line-16;
+    }
+    &-s12{
+      font-size: $size-12;
+      line-height: $line-16;
+    }
+    &-s14{
+      font-size: $size-14;
+      line-height: $line-16;
+    }
+    &-s14{
+      font-size: $size-24;
+      line-height: $line-32;
+    }
+  }
+}
