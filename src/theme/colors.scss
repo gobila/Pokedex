@@ -24,3 +24,62 @@ $medium-gray:#666666;
 $light-gray:#E0E0E0;
 $white:#FFFFFF;
 $backgound:#F7F7F7;
+
+
+// MIXINS
+@mixin types {
+  &.type-rock{
+    background-color: $rock-color;
+  }
+  &.type-ghost{
+    background-color: $ghost-color;
+  }
+  &.type-steel{
+    background-color: $steel-color;
+  }
+  &.type-water{
+    background-color: $water-color;
+  }
+  &.type-grass{
+    background-color: $grass-color;
+  }
+  &.type-psychic{
+    background-color: $psychic-color;
+  }
+  &.type-ice{
+    background-color: $ice-color;
+  }
+  &.type-dark{
+    background-color: $dark-color;
+  }
+  &.type-fairy{
+    background-color: $fairy-color;
+  }
+  &.type-normal{
+    background-color: $normal-color;
+  }
+  &.type-fighting{
+    background-color: $fighting-color;
+  }
+  &.type-flying{
+    background-color: $flying-color;
+  }
+  &.type-poison{
+    background-color: $poison-color;
+  }
+  &.type-ground{
+    background-color: $ground-color;
+  }
+  &.type-bug{
+    background-color: $bug-color;
+  }
+  &.type-fire{
+    background-color: $fire-color;
+  }
+  &.type-eletric{
+    background-color: $eletric-color;
+  }
+  &.type-dragon{
+    background-color: $dragon-color;
+  }
+}
