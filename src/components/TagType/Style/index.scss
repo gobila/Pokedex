@@ -1,0 +1,15 @@
+@import '../../../theme/colors.scss';
+@import '../../../theme/typography.scss';
+
+.typeContainer{
+  border-radius: 10px;
+  width: max-content;
+  max-width: 60px;
+  padding: 2px 8px;
+  text-transform: capitalize;
+  color: $white;
+  p{
+    margin:0px;
+  }
+  @include types;
+}

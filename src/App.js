@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 // import logo from './logo.svg';
 import './App.css';
+import TagType from './components/TagType';
 import apiConnect from './service/apiConnect';
 
 import './theme/global.scss';
@@ -45,7 +46,9 @@ function App() {
             alt={`${item.name} srite`}
           />
           <p className="poppins-s16">{item.name}</p>
-          <p>{item.types.map((i) => <p>{i.type.name}</p>)}</p>
+          {item.types.map((i) => (
+            <TagType type={i.type.name}>{i.type.name}</TagType>
+          ))}
           <p>{item.order}</p>
         </div>
       ))}
