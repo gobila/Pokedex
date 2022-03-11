@@ -7,7 +7,7 @@ export default function PokeBox({ pokemon }) {
   const { id } = pokemon;
   const { name } = pokemon;
   // eslint-disable-next-line no-undef
-  const pokeImg = pokemon.sprites.other['official-artwork'].front_default;
+  const pokeImg = pokemon.sprites.front_default;
   const pokeTypes = pokemon.types;
 
   useEffect(() => {
