@@ -7,12 +7,18 @@
   margin: 8px;
   border: 2px solid;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
   &-ndex{
     text-align: right;
     padding: 4px 8px;
     p{
       margin: 0px;
     }
+  }
+  &-img{
+    width: 60%;
+    margin: auto;
   }
   &-name{
     padding: 8px;

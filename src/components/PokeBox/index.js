@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
@@ -7,7 +6,8 @@ export default function PokeBox({ pokemon }) {
   const [mask, setMask] = useState();
   const { id } = pokemon;
   const { name } = pokemon;
-  const pokeImg = pokemon.sprites.front_default;
+  // eslint-disable-next-line no-undef
+  const pokeImg = pokemon.sprites.other['official-artwork'].front_default;
   const pokeTypes = pokemon.types;
 
   useEffect(() => {
@@ -31,6 +31,7 @@ export default function PokeBox({ pokemon }) {
       <img
         src={pokeImg}
         alt={`${name} srite`}
+        className="pokebox-img"
       />
       <div className={`pokebox-name type-${pokemon.types[0].type.name}`}>
         <p className="poppins-s16">{name}</p>
