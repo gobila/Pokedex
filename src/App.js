@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 // import logo from './logo.svg';
 import './App.css';
+import PokeBox from './components/PokeBox';
 import TagType from './components/TagType';
 import apiConnect from './service/apiConnect';
 
@@ -24,12 +25,12 @@ function App() {
     const list = pokemonList.map(async (item) => connect.getPokemon(item.name));
     const results = await Promise.all(list);
     setPokemonData(results);
+    console.log(results);
   }
   async function getTypes() {
     getAllPokemon();
     const typesData = await connect.getTypes();
     setTypes(typesData.results);
-    console.log(typesData.results);
   }
 
   useEffect(async () => {
@@ -38,21 +39,14 @@ function App() {
   }, [isLoading]);
   return (
     <div className="App">
-
-      {pokemonData.map((item) => (
-        <div key={item.id}>
-          <img
-            src={item.sprites.front_default}
-            alt={`${item.name} srite`}
+      <div className="AppContainer">
+        {pokemonData.map((item) => (
+          <PokeBox
+            key={item.id}
+            pokemon={item}
           />
-          <p className="poppins-s16">{item.name}</p>
-          {item.types.map((i) => (
-            <TagType type={i.type.name}>{i.type.name}</TagType>
-          ))}
-          <p>{item.order}</p>
-        </div>
-      ))}
-      {/* {pokemon.name} */}
+        ))}
+      </div>
     </div>
   );
 }

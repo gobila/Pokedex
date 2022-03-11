@@ -28,58 +28,170 @@ $backgound:#F7F7F7;
 
 // MIXINS
 @mixin types {
-  &.type-rock{
+  .type-rock{
     background-color: $rock-color;
   }
-  &.type-ghost{
+  .type-ghost{
     background-color: $ghost-color;
   }
-  &.type-steel{
+  .type-steel{
     background-color: $steel-color;
   }
-  &.type-water{
+  .type-water{
     background-color: $water-color;
   }
-  &.type-grass{
+  .type-grass{
     background-color: $grass-color;
   }
-  &.type-psychic{
+  .type-psychic{
     background-color: $psychic-color;
   }
-  &.type-ice{
+  .type-ice{
     background-color: $ice-color;
   }
-  &.type-dark{
+  .type-dark{
     background-color: $dark-color;
   }
-  &.type-fairy{
+  .type-fairy{
     background-color: $fairy-color;
   }
-  &.type-normal{
+  .type-normal{
     background-color: $normal-color;
   }
-  &.type-fighting{
+  .type-fighting{
     background-color: $fighting-color;
   }
-  &.type-flying{
+  .type-flying{
     background-color: $flying-color;
   }
-  &.type-poison{
+  .type-poison{
     background-color: $poison-color;
   }
-  &.type-ground{
+  .type-ground{
     background-color: $ground-color;
   }
-  &.type-bug{
+  .type-bug{
     background-color: $bug-color;
   }
-  &.type-fire{
+  .type-fire{
     background-color: $fire-color;
   }
-  &.type-eletric{
+  .type-eletric{
     background-color: $eletric-color;
   }
-  &.type-dragon{
+  .type-dragon{
     background-color: $dragon-color;
+  }
+}
+@mixin border4type {
+  .bd-rock{
+    border-color: $rock-color;
+  }
+  .bd-ghost{
+    border-color: $ghost-color;
+  }
+  .bd-steel{
+    border-color: $steel-color;
+  }
+  .bd-water{
+    border-color: $water-color;
+  }
+  .bd-grass{
+    border-color: $grass-color;
+  }
+  .bd-psychic{
+    border-color: $psychic-color;
+  }
+  .bd-ice{
+    border-color: $ice-color;
+  }
+  .bd-dark{
+    border-color: $dark-color;
+  }
+  .bd-fairy{
+    border-color: $fairy-color;
+  }
+  .bd-normal{
+    border-color: $normal-color;
+  }
+  .bd-fighting{
+    border-color: $fighting-color;
+  }
+  .bd-flying{
+    border-color: $flying-color;
+  }
+  .bd-poison{
+    border-color: $poison-color;
+  }
+  .bd-ground{
+    border-color: $ground-color;
+  }
+  .bd-bug{
+    border-color: $bug-color;
+  }
+  .bd-fire{
+    border-color: $fire-color;
+  }
+  .bd-eletric{
+    border-color: $eletric-color;
+  }
+  .bd-dragon{
+    border-color: $dragon-color;
+  }
+}
+@mixin color4type {
+  .color-rock{
+    color: $rock-color;
+  }
+  .color-ghost{
+    color: $ghost-color;
+  }
+  .color-steel{
+    color: $steel-color;
+  }
+  .color-water{
+    color: $water-color;
+  }
+  .color-grass{
+    color: $grass-color;
+  }
+  .color-psychic{
+    color: $psychic-color;
+  }
+  .color-ice{
+    color: $ice-color;
+  }
+  .color-dark{
+    color: $dark-color;
+  }
+  .color-fairy{
+    color: $fairy-color;
+  }
+  .color-normal{
+    color: $normal-color;
+  }
+  .color-fighting{
+    color: $fighting-color;
+  }
+  .color-flying{
+    color: $flying-color;
+  }
+  .color-poison{
+    color: $poison-color;
+  }
+  .color-ground{
+    color: $ground-color;
+  }
+  .color-bug{
+    color: $bug-color;
+  }
+  .color-fire{
+    color: $fire-color;
+  }
+  .color-eletric{
+    color: $eletric-color;
+  }
+  .color-dragon{
+    color: $dragon-color;
   }
 }
