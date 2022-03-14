@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 // import logo from './logo.svg';
 import '../App.css';
 import PokeBox from '../components/PokeBox';
@@ -25,7 +26,6 @@ function Home() {
     const list = pokemonList.map(async (item) => connect.getPokemon(item.name));
     const results = await Promise.all(list);
     setPokemonData(results);
-    console.log(results);
   }
   async function getTypes() {
     getAllPokemon();
@@ -41,10 +41,16 @@ function Home() {
     <div className="App">
       <div className="AppContainer">
         {pokemonData.map((item) => (
-          <PokeBox
+          <Link
             key={item.id}
-            pokemon={item}
-          />
+            // to="/details"
+            to={`/${item.name}`}
+            state={{ name: item }}
+          >
+            <PokeBox
+              pokemon={item}
+            />
+          </Link>
         ))}
       </div>
     </div>
