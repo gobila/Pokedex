@@ -1,5 +1,8 @@
 .container{
   margin: 0px;
+  display: flex;
+  flex-direction:column;
+  flex: 1;
   &_card{
     background-image: url('../../assets/Pokeball.svg');
     background-position: 97% 5%;
