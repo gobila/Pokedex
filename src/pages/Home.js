@@ -9,6 +9,8 @@ import apiConnect from '../service/apiConnect';
 
 import '../theme/global.scss';
 
+import '../components/PokeBox/style.scss';
+
 function Home() {
   const [types, setTypes] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -45,7 +47,8 @@ function Home() {
             key={item.id}
             // to="/details"
             to={`/${item.name}`}
-            state={{ name: item }}
+            state={{ pokemon: item }}
+            style={{ width: '27%' }}
           >
             <PokeBox
               pokemon={item}
