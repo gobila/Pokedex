@@ -6,7 +6,7 @@ export default function Card({
   id, name, imgs, types, weight, height, moves, stats, species, desc,
 }) {
   return (
-    <div className={`${Style.container} type-${types[0].type.name}`}>
+    <div className={`${Style.container} ${Style.container_card} type-${types[0].type.name}`}>
       <p>
         {id}
       </p>

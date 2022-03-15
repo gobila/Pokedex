@@ -1,3 +1,9 @@
 .container{
   margin: 0px;
+  &_card{
+    background-image: url('../../assets/Pokeball.svg');
+    background-position: 97% 5%;
+    background-blend-mode: screen;
+    background-size: 35%;
+  }
 }

@@ -1,14 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-// import logo from './logo.svg';
 import '../App.css';
 import Card from '../components/Card';
-import PokeBox from '../components/PokeBox';
 import TagType from '../components/TagType';
 import apiConnect from '../service/apiConnect';
-
 import '../theme/global.scss';
+import Style from './Styles/Details.module.scss';
 
 // eslint-disable-next-line react/prop-types
 function Details() {
@@ -21,8 +19,9 @@ function Details() {
   const flavorText = 's';
   const move = [moves[0].move.name, moves[2].move.name];
   return (
-    <div className="App">
+    <div className={Style.details}>
       <Card
+        className={Style.details_card}
         name={name}
         id={id}
         imgs={sprites}
