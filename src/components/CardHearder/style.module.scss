@@ -1,0 +1,17 @@
+@import '../../theme/colors.scss';
+.CardHearder{
+  display: flex;
+  width: 100%;
+  justify-content:space-around;
+  align-items: center;
+  &_back{
+    color:$white;
+    text-decoration: none;
+  }
+  &_name{
+    color:$white;
+  }
+  &_ndex{
+    color:$white;
+  }
+}

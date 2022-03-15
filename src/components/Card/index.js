@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import CardHearder from '../CardHearder/indes';
 import Style from './style.module.scss';
 
 export default function Card({
@@ -7,12 +8,10 @@ export default function Card({
 }) {
   return (
     <div className={`${Style.container} ${Style.container_card} type-${types[0].type.name}`}>
-      <p>
-        {id}
-      </p>
-      <p>
-        {name}
-      </p>
+      <CardHearder
+        name={name}
+        ndex={id}
+      />
       <img src={imgs.front_default} alt="" />
       <p>
         {types.map(({ type }) => (
