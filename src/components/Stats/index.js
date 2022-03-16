@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Style from './style.module.scss';
 
-export default function Stats({ data }) {
+export default function Stats({ data, typeColor }) {
   const base = [
     { name: 'hp', stats: data[0].base_stat },
     { name: 'atk', stats: data[1].base_stat },
@@ -11,19 +11,20 @@ export default function Stats({ data }) {
     { name: 'sdef', stats: data[4].base_stat },
     { name: 'spd', stats: data[5].base_stat },
   ];
+  console.log(typeColor);
 
   return (
     <div className={Style.container_stats}>
       {base.map((item) => (
         <table className={Style.stats}>
           <tr className={Style.stats_item}>
-            <th className={Style.stats_text}>
+            <th className={`${Style.stats_text} color-${typeColor}`}>
               {item.name}
             </th>
             <td className={Style.stats_number}>
               {item.stats}
             </td>
-            <progress className={Style.stats_bar} value={item.stats} max="250" />
+            <progress className={`${Style.stats_bar}`} value={item.stats} max="250" style={{ backgroundColor: 'red' }} />
           </tr>
         </table>
       ))}
@@ -33,4 +34,5 @@ export default function Stats({ data }) {
 
 Stats.propTypes = {
   data: PropTypes.objectOf.isRequired,
+  typeColor: PropTypes.string.isRequired,
 };

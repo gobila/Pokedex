@@ -31,6 +31,7 @@ export default function Card({
         />
         <h3 className={`color-${types[0].type.name} poppins-s16 bold`}>Base Stats</h3>
         <Stats
+          typeColor={types[0].type.name}
           data={stats}
         />
       </div>
