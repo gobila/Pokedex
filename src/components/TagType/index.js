@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Style/index.scss';
 
-export default function TagType({ children, type }) {
+// eslint-disable-next-line no-unused-vars
+export default function TagType({ type }) {
   return (
-    <div className={`typeContainer type-${type}`}>
+    <div className={`typeContainer type-${type.name}`}>
       <p className="poppins-s10 bold">
-        {children}
+        {type.name}
       </p>
     </div>
   );
 }
 
 TagType.propTypes = {
-  children: PropTypes.node.isRequired,
   type: PropTypes.string.isRequired,
 };

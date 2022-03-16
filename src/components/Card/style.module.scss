@@ -18,4 +18,8 @@
     border-radius: 8px;
     // margin: auto;
   }
+  &_types{
+    display: flex;
+    place-content: center;
+  }
 }

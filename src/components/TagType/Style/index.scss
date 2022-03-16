@@ -8,8 +8,9 @@
   padding: 2px 8px;
   text-transform: capitalize;
   color: $white;
+  margin: 8px;
   p{
     margin:0px;
   }
-  @include types;
 }
+@include types;
