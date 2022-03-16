@@ -22,14 +22,14 @@ export default function Card({
             <TagType type={type} />
           ))}
         </div>
-        <h3 className={`color-${types[0].type.name} poppins-s14 bold`}>About</h3>
+        <h3 className={`color-${types[0].type.name} poppins-s16 bold`}>About</h3>
         <CardAbout
           weight={weight}
           height={height}
           moves={moves}
           desc={desc}
         />
-        <h3 className={`color-${types[0].type.name} poppins-s14 bold`}>Base Stats</h3>
+        <h3 className={`color-${types[0].type.name} poppins-s16 bold`}>Base Stats</h3>
         <Stats
           data={stats}
         />

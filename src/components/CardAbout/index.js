@@ -9,26 +9,26 @@ export default function CardAbout({
     <div className={Style.About_container}>
       <div className={Style.About_weight}>
         <img src="./icons/Weight.svg" alt="Weight" className={Style.About_icon} />
-        <p>{`${weight} kg`}</p>
+        <p className="poppins-s14">{`${weight} kg`}</p>
       </div>
-      <span className={Style.About_label}>Weight</span>
+      <span className={`${Style.About_label} poppins-s12`}>Weight</span>
 
       <div className={Style.About_height}>
         <img src="./icons/Height.svg" alt="as" className={Style.About_icon} />
-        <p>{`${height} m`}</p>
+        <p className="poppins-s14">{`${height} m`}</p>
       </div>
-      <span className={Style.About_label}>Height</span>
+      <span className={`${Style.About_label} poppins-s12`}>Height</span>
 
       <div className={Style.About_moves}>
         <div className={Style.About_moves_text}>
           {moves.map((move) => (
-            <span>
+            <span className="poppins-s14">
               {move}
             </span>
           ))}
         </div>
       </div>
-      <span className={Style.About_label}>Moves</span>
+      <span className={`${Style.About_label} poppins-s12`}>Moves</span>
 
       <div className={Style.About_desc}>
         <p>{desc}</p>
