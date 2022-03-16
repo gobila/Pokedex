@@ -12,12 +12,21 @@ import Style from './Styles/Details.module.scss';
 function Details() {
   const location = useLocation();
   const { pokemon } = location.state;
+  const [desc, setDesc] = useState([]);
   const {
-    id, name, sprites, types, weight, height, moves, stats, species,
+    id, name, sprites, types, weight, height, moves, stats,
   } = pokemon;
-
-  const flavorText = 's';
   const move = [moves[0].move.name, moves[2].move.name];
+  const apiSpecie = apiConnect;
+
+  async function getPokemonSpecie() {
+    const getSpecie = await apiSpecie.getSpecie(id);
+    setDesc(getSpecie.flavor_text_entries[0].flavor_text);
+  }
+  useEffect(() => {
+    getPokemonSpecie();
+  }, [pokemon]);
+
   return (
     <div className={Style.details}>
       <Card
@@ -28,7 +37,7 @@ function Details() {
         weight={weight}
         height={height}
         moves={move}
-        desc={flavorText}
+        desc={desc}
         stats={stats}
       />
     </div>

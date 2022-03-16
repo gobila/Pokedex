@@ -19,6 +19,12 @@ const apiConnect = {
       .then((data) => data.json());
     return response;
   },
+  async getSpecie(pokemonID) {
+    const url = `${urlBase}pokemon-species/${pokemonID}`;
+    const response = await fetch(url)
+      .then((data) => data.json());
+    return response;
+  },
 };
 
 export default apiConnect;

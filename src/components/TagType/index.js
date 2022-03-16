@@ -6,7 +6,7 @@ import './Style/index.scss';
 export default function TagType({ type }) {
   return (
     <div className={`typeContainer type-${type.name}`}>
-      <p className="poppins-s10 bold">
+      <p className="poppins-s12 bold">
         {type.name}
       </p>
     </div>
