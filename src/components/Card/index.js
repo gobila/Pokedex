@@ -3,6 +3,7 @@ import React from 'react';
 import CardHearder from '../CardHearder/indes';
 import Stats from '../Stats';
 import Style from './style.module.scss';
+import TagType from '../TagType';
 
 export default function Card({
   id, name, imgs, types, weight, height, moves, stats, species, desc,
@@ -15,14 +16,12 @@ export default function Card({
       />
       <img src={imgs.front_default} alt="" />
       <div className={` ${Style.card_info}`}>
-
-        <p>
-          {types.map(({ type }) => (
-            <p>
-              {type.name}
-            </p>
-          ))}
-        </p>
+        {/* <TagType type={types} /> */}
+        {types.map(({ type }) => (
+          <TagType type={type}>
+            {type.name}
+          </TagType>
+        ))}
         <p>
           {weight}
         </p>
