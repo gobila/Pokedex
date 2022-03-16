@@ -1,4 +1,8 @@
+@import '../../theme/colors.scss';
+
 .details {
-  text-align: center; 
-  // display: flex;
+  text-align: center;
+  &_card{
+    background-color: $white;
+  }
 }
