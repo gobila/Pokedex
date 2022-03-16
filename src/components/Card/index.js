@@ -16,12 +16,11 @@ export default function Card({
       />
       <img src={imgs.front_default} alt="" />
       <div className={` ${Style.card_info}`}>
-        {/* <TagType type={types} /> */}
-        {types.map(({ type }) => (
-          <TagType type={type}>
-            {type.name}
-          </TagType>
-        ))}
+        <div className={Style.card_types}>
+          {types.map(({ type }) => (
+            <TagType type={type} />
+          ))}
+        </div>
         <p>
           {weight}
         </p>
