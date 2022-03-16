@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import CardHearder from '../CardHearder/indes';
+import Stats from '../Stats';
 import Style from './style.module.scss';
 
 export default function Card({
@@ -35,12 +36,9 @@ export default function Card({
       <p>
         {desc}
       </p>
-      {stats.map((item) => (
-        <p>
-          {item.stat.name}
-          {item.base_stat}
-        </p>
-      ))}
+      <Stats
+        data={stats}
+      />
     </div>
   );
 }

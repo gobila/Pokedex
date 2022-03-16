@@ -1,0 +1,35 @@
+@import '../../theme/colors.scss';
+.container_stats{
+  background-color:$white;
+  margin: 8px;
+  border-radius: 8px;
+}
+.stats{
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: auto;
+  &_item{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 8px;
+  }
+  &_text{
+    width: 20%;
+    text-align: right;
+    text-transform: uppercase;
+    // padding: 2%;
+    margin-right: 2%;
+  }
+  &_number{
+    width: 16%;
+    margin: 0px;
+    text-transform: capitalize;
+    border-left: solid $light-gray 2px;
+  }
+  &_bar{
+    width: 64%;
+  }
+}
