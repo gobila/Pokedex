@@ -11,8 +11,6 @@ export default function Stats({ data, typeColor }) {
     { name: 'sdef', stats: data[4].base_stat },
     { name: 'spd', stats: data[5].base_stat },
   ];
-  console.log(typeColor);
-
   return (
     <div className={Style.container_stats}>
       {base.map((item) => (
