@@ -1,12 +1,21 @@
-.container{
-  margin: 0px;
-  display: flex;
-  flex-direction:column;
-  flex: 1;
-  &_card{
-    background-image: url('../../assets/Pokeball.svg');
+@import '../../theme/colors.scss';
+
+.card{
+  &_container{
+    margin: 0px;
+    display: flex;
+    flex-direction:column;
+    flex: 1;
     background-position: 97% 5%;
     background-blend-mode: screen;
     background-size: 35%;
+    background-image: url('../../assets/Pokeball.svg');
+    padding: 2%;
+  }
+  &_info{
+    background-color: $white;
+    // width: 90%;
+    border-radius: 8px;
+    // margin: auto;
   }
 }

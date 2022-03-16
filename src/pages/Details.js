@@ -18,11 +18,9 @@ function Details() {
 
   const flavorText = 's';
   const move = [moves[0].move.name, moves[2].move.name];
-  console.log(types);
   return (
     <div className={Style.details}>
       <Card
-        className={Style.details_card}
         name={name}
         id={id}
         imgs={sprites}

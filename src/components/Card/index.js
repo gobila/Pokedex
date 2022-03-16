@@ -8,37 +8,40 @@ export default function Card({
   id, name, imgs, types, weight, height, moves, stats, species, desc,
 }) {
   return (
-    <div className={`${Style.container} ${Style.container_card} type-${types[0].type.name}`}>
+    <div className={` ${Style.card_container} type-${types[0].type.name}`}>
       <CardHearder
         name={name}
         ndex={id}
       />
       <img src={imgs.front_default} alt="" />
-      <p>
-        {types.map(({ type }) => (
-          <p>
-            {type.name}
-          </p>
-        ))}
-      </p>
-      <p>
-        {weight}
-      </p>
-      <p>
-        {height}
-      </p>
-      <p>
-        {moves}
-      </p>
-      <p>
-        {species}
-      </p>
-      <p>
-        {desc}
-      </p>
-      <Stats
-        data={stats}
-      />
+      <div className={` ${Style.card_info}`}>
+
+        <p>
+          {types.map(({ type }) => (
+            <p>
+              {type.name}
+            </p>
+          ))}
+        </p>
+        <p>
+          {weight}
+        </p>
+        <p>
+          {height}
+        </p>
+        <p>
+          {moves}
+        </p>
+        <p>
+          {species}
+        </p>
+        <p>
+          {desc}
+        </p>
+        <Stats
+          data={stats}
+        />
+      </div>
     </div>
   );
 }

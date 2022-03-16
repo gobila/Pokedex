@@ -1,11 +1,10 @@
 @import '../../theme/colors.scss';
 .container_stats{
-  background-color:$white;
   margin: 8px;
   border-radius: 8px;
 }
 .stats{
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
