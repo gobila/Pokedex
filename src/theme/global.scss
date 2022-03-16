@@ -2,9 +2,9 @@
 @import './colors.scss';
 @import "sanitize.css";
 html{
-  // font-family: 'Times New Roman', Times, serif;
   font-weight: 400;
   background-color: $backgound;
+  font-family: 'Poppins', sans-serif;
 }
 .AppContainer{
   margin: auto;

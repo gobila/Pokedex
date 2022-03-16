@@ -1,0 +1,42 @@
+@import '../../theme/typography.scss';
+@mixin Text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.About{
+  &_container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 3, 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+  &_label{
+    margin:0px;
+  }
+  &_weight{
+    grid-area: 1 / 1 / 2 / 2;
+    @include Text;
+  }
+  &_height{
+    grid-area: 1 / 2 / 2 / 3;
+    @include Text;
+  }
+  &_moves{
+    grid-area: 1 / 3 / 2 / 4;
+    text-transform: capitalize;
+    &_text{
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  &_desc{
+    grid-area: 3 / 1 / 4 / 4;
+  }
+  &_icon{
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+  }
+}
