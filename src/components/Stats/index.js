@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Style from './style.module.scss';
+import ProgressBar from '../ProgressBar';
 
 export default function Stats({ data, typeColor }) {
   const base = [
@@ -22,7 +23,10 @@ export default function Stats({ data, typeColor }) {
             <td className={Style.stats_number}>
               {item.stats}
             </td>
-            <progress className={`${Style.stats_bar}`} value={item.stats} max="250" style={{ backgroundColor: 'red' }} />
+            <ProgressBar
+              bgcolor={`type-${typeColor}`}
+              completed={item.stats}
+            />
           </tr>
         </table>
       ))}
