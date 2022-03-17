@@ -5,6 +5,7 @@ import Stats from '../Stats';
 import Style from './style.module.scss';
 import TagType from '../TagType';
 import CardAbout from '../CardAbout';
+import CardImg from '../CardImg';
 
 export default function Card({
   id, name, imgs, types, weight, height, moves, stats, desc,
@@ -15,7 +16,7 @@ export default function Card({
         name={name}
         ndex={id}
       />
-      <img src={imgs.front_default} alt="" />
+      <CardImg img={imgs.other['official-artwork'].front_default} name={name} />
       <div className={` ${Style.card_info}`}>
         <div className={Style.card_types}>
           {types.map(({ type }) => (

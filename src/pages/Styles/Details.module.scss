@@ -2,6 +2,9 @@
 
 .details {
   text-align: center;
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
   &_card{
     background-color: $white;
   }
