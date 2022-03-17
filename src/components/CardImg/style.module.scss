@@ -1,0 +1,28 @@
+.cardImg{
+  
+  @media screen and (min-width: 0px) {
+    &_container{
+      margin: auto;
+      // position: relative;
+      z-index: 1;
+      margin-top: 0px;
+      margin-bottom: -80px;
+    }
+    &_image{
+      width: 75%;
+    }
+  }
+  @media screen and (min-width: 425px) {
+    &_container{
+      margin-bottom: -75px;
+    }
+    &_image{
+      width: 75%;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    &_image{
+      width: 100%;
+    }
+  }
+}
