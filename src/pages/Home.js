@@ -1,15 +1,14 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import logo from './logo.svg';
 import '../App.css';
 import PokeBox from '../components/PokeBox';
-import TagType from '../components/TagType';
 import apiConnect from '../service/apiConnect';
 
 import '../theme/global.scss';
 
 import '../components/PokeBox/style.scss';
+import Hearder from '../components/Hearder';
 
 function Home() {
   const [types, setTypes] = useState();
@@ -39,8 +38,10 @@ function Home() {
     getPokemon();
     getTypes();
   }, [isLoading]);
+
   return (
     <div className="App">
+      <Hearder />
       <div className="AppContainer">
         {pokemonData.map((item) => (
           <Link
