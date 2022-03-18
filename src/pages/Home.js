@@ -28,6 +28,22 @@ function Home() {
     if (a.name > b.name) return 1;
     return 0;
   }));
+  const Click = () => {
+    setToggleAZ(!toggleAZ);
+    if (toggleAZ === false) {
+      setPokemonData(pokemonData.sort((a, b) => {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+      }));
+    } if (toggleAZ === true) {
+      setPokemonData(pokemonData.sort((a, b) => {
+        if (a.id < b.id) return -1;
+        if (a.id > b.id) return 1;
+        return 0;
+      }));
+    }
+  };
   // END ORDERED
   async function getAllPokemon() {
     const getAll = await connect.getAll();
@@ -45,13 +61,9 @@ function Home() {
     const typesData = await connect.getTypes();
     setTypes(typesData.results);
   }
-  const Click = () => {
-    setToggleAZ(!toggleAZ);
-    return toggleAZ === true ? AZ() : ndex();
-  };
+
   useEffect(async () => {
     getPokemon();
-    // getTypes();
   }, [isLoading]);
 
   return (
@@ -61,7 +73,6 @@ function Home() {
         {pokemonData.map((item) => (
           <Link
             key={item.id}
-            // to="/details"
             to={`/${item.name}`}
             state={{ pokemon: item }}
             style={{ width: '27%' }}
