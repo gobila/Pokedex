@@ -5,6 +5,11 @@ import Style from './style.module.scss';
 import Logo from '../../assets/Pokeball.svg';
 
 export default function Hearder({ onclick, AZ }) {
+  const [input, setInput] = useState();
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  };
   return (
     <div className={Style.hearder_container}>
       <div className={Style.hearder_title}>
@@ -28,12 +33,18 @@ export default function Hearder({ onclick, AZ }) {
       </div>
       <form className={`${Style.hearder_search} poppins-s14`}>
         <img className={Style.hearder_search_image} src="./icons/search.svg" alt="" />
-        <input name="search" className={Style.hearder_search_input} type="text" placeholder="Procurar" />
+        <input
+          value={input}
+          onChange={handleChange}
+          className={Style.hearder_search_input}
+          type="text"
+          placeholder="Procurar"
+        />
         <button
           aria-label="Close"
           className={Style.hearder_search_button}
           type="button"
-          onClick={(e) => console.log(e.target.value)}
+          onClick={() => setInput('')}
         />
       </form>
     </div>
