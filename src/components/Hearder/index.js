@@ -15,13 +15,11 @@ export default function Hearder({ onclick, AZ }) {
       <div className={Style.hearder_title}>
         <img className={Style.hearder_logo} src={Logo} alt="logo" />
         <h1>Pokédex</h1>
-        {/* <Classification /> */}
         <button
           className={Style.classification_button}
           type="button"
           onClick={() => (
             onclick()
-            // setToggleAZ(!toggleAZ)
           )}
         >
           <p className={Style.classification_text}>
