@@ -1,23 +1,34 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import logo from './logo.svg';
 import '../App.css';
 import PokeBox from '../components/PokeBox';
-import TagType from '../components/TagType';
 import apiConnect from '../service/apiConnect';
 
 import '../theme/global.scss';
 
 import '../components/PokeBox/style.scss';
+import Hearder from '../components/Hearder';
 
 function Home() {
   const [types, setTypes] = useState();
+  const [toggleAZ, setToggleAZ] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [pokemonData, setPokemonData] = useState([]);
   const [pokemonList, setPokemonList] = useState([]);
   const connect = apiConnect;
-
+  // ORDERED
+  const ndex = () => setPokemonData(pokemonData.sort((a, b) => {
+    if (a.id < b.id) return -1;
+    if (a.id > b.id) return 1;
+    return 0;
+  }));
+  const AZ = () => setPokemonData(pokemonData.sort((a, b) => {
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1;
+    return 0;
+  }));
+  // END ORDERED
   async function getAllPokemon() {
     const getAll = await connect.getAll();
     setPokemonList(getAll.results);
@@ -34,13 +45,18 @@ function Home() {
     const typesData = await connect.getTypes();
     setTypes(typesData.results);
   }
-
+  const Click = () => {
+    setToggleAZ(!toggleAZ);
+    return toggleAZ === true ? AZ() : ndex();
+  };
   useEffect(async () => {
     getPokemon();
-    getTypes();
+    // getTypes();
   }, [isLoading]);
+
   return (
     <div className="App">
+      <Hearder onclick={Click} AZ={toggleAZ} />
       <div className="AppContainer">
         {pokemonData.map((item) => (
           <Link
