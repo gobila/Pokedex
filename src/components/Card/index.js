@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import CardHearder from '../CardHearder/indes';
+import CardHearder from '../CardHearder';
 import Stats from '../Stats';
 import Style from './style.module.scss';
 import TagType from '../TagType';

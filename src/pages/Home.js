@@ -6,6 +6,7 @@ import PokeBox from '../components/PokeBox';
 import apiConnect from '../service/apiConnect';
 
 import '../theme/global.scss';
+import Style from './Styles/Home.module.scss';
 
 import '../components/PokeBox/style.scss';
 import Hearder from '../components/Hearder';
@@ -72,6 +73,7 @@ function Home() {
       <div className="AppContainer">
         {pokemonData.map((item) => (
           <Link
+            className={Style.Home_link}
             key={item.id}
             to={`/${item.name}`}
             state={{ pokemon: item }}
