@@ -17,18 +17,9 @@ function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [pokemonData, setPokemonData] = useState([]);
   const [pokemonList, setPokemonList] = useState([]);
+  const [page, setPage] = useState(0);
   const connect = apiConnect;
   // ORDERED
-  const ndex = () => setPokemonData(pokemonData.sort((a, b) => {
-    if (a.id < b.id) return -1;
-    if (a.id > b.id) return 1;
-    return 0;
-  }));
-  const AZ = () => setPokemonData(pokemonData.sort((a, b) => {
-    if (a.name < b.name) return -1;
-    if (a.name > b.name) return 1;
-    return 0;
-  }));
   const Click = () => {
     setToggleAZ(!toggleAZ);
     if (toggleAZ === false) {
@@ -47,9 +38,15 @@ function Home() {
   };
   // END ORDERED
   async function getAllPokemon() {
-    const getAll = await connect.getAll();
-    setPokemonList(getAll.results);
-    setIsLoading(false);
+    try {
+      const data = await connect.getAll(9, 9 * page);
+      const promises = data.results.map(async (item) => connect.getPokemon(item.name));
+      const results = await Promise.all(promises);
+      setPokemonData(results);
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
   }
   async function getPokemon() {
     getAllPokemon();
@@ -64,7 +61,7 @@ function Home() {
   }
 
   useEffect(async () => {
-    getPokemon();
+    getAllPokemon();
   }, [isLoading]);
 
   return (
@@ -85,6 +82,12 @@ function Home() {
           </Link>
         ))}
       </div>
+      <button type="button" onClick={() => setPage(page - 1)}>
+        voltar
+      </button>
+      <button type="button" onClick={() => setPage(page + 1)}>
+        proximo
+      </button>
     </div>
   );
 }
