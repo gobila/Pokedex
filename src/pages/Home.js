@@ -62,7 +62,7 @@ function Home() {
 
   useEffect(async () => {
     getAllPokemon();
-  }, [isLoading]);
+  }, [page]);
 
   return (
     <div className="App">
