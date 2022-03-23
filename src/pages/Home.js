@@ -10,6 +10,7 @@ import Style from './Styles/Home.module.scss';
 
 import '../components/PokeBox/style.scss';
 import Hearder from '../components/Hearder';
+import Pagination from '../components/Pagination';
 
 function Home() {
   const [types, setTypes] = useState();
@@ -39,10 +40,10 @@ function Home() {
   // END ORDERED
   async function getAllPokemon() {
     try {
-      const data = await connect.getAll(9, 9 * page);
+      const data = await connect.getAll(15, 15 * page);
       const promises = data.results.map(async (item) => connect.getPokemon(item.name));
       const results = await Promise.all(promises);
-      setPokemonData(results);
+      setPokemonData([...pokemonData, ...results]);
       setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -59,11 +60,21 @@ function Home() {
     const typesData = await connect.getTypes();
     setTypes(typesData.results);
   }
-
   useEffect(async () => {
     getAllPokemon();
+    console.log(pokemonData);
   }, [page]);
-
+  // setando a pagina
+  // useEffect(() => {
+  //   const intersectionObserver = new IntersectionObserver((entries) => {
+  //     if (entries.some((entry) => entry.isIntersecting)) {
+  //       setPage((currentValue) => currentValue + 1);
+  //     }
+  //   });
+  //   intersectionObserver.observe(document.querySelector('#sentinela'));
+  //   return () => intersectionObserver.disconnect();
+  // }, []);
+  console.log(pokemonList);
   return (
     <div className="App">
       <Hearder onclick={Click} AZ={toggleAZ} />
@@ -82,12 +93,14 @@ function Home() {
           </Link>
         ))}
       </div>
-      <button type="button" onClick={() => setPage(page - 1)}>
-        voltar
-      </button>
-      <button type="button" onClick={() => setPage(page + 1)}>
-        proximo
-      </button>
+
+      <Pagination next={() => setPage(page + 1)} />
+      {/* {pokemonData.length < 1003
+      && (
+      <div display="flex" flexDirection="column" alignItems="center" id="sentinela">
+        <p tag="h3" variant="subTitle">Estamos buscando novas fofocas para você</p>
+      </div>
+      )} */}
     </div>
   );
 }

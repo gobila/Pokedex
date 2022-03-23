@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import '../App.css';
 import Card from '../components/Card';
 import TagType from '../components/TagType';
@@ -17,15 +17,23 @@ function Details() {
     id, name, sprites, types, weight, height, moves, stats,
   } = pokemon;
   const move = [moves[0].move.name, moves[2].move.name];
-  const apiSpecie = apiConnect;
+  const connection = apiConnect;
+  const [nextPokemon, setNextPokemon] = useState();
 
   async function getPokemonSpecie() {
-    const getSpecie = await apiSpecie.getSpecie(id);
+    const getSpecie = await connection.getSpecie(id);
     setDesc(getSpecie.flavor_text_entries[0].flavor_text);
+  }
+  async function getNext() {
+    const next = await connection.getPokemon(id + 1);
+    setNextPokemon(next);
   }
   useEffect(() => {
     getPokemonSpecie();
+    getNext();
   }, [pokemon]);
+  console.log(nextPokemon);
+  const link = id + 1;
 
   return (
     <div className={Style.details}>
@@ -40,6 +48,7 @@ function Details() {
         desc={desc}
         stats={stats}
       />
+      <Link to={`/${link}`} state={{ pokemon: nextPokemon }}>poximo</Link>
     </div>
   );
 }
