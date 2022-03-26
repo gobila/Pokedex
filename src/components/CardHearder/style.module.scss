@@ -7,6 +7,12 @@
   &_back{
     color:$white;
     text-decoration: none;
+    display: flex;
+    &_icon{
+      path{
+        fill:white;
+      }
+    }
   }
   &_name{
     color:$white;

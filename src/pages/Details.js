@@ -8,6 +8,8 @@ import apiConnect from '../service/apiConnect';
 import '../theme/global.scss';
 import Style from './Styles/Details.module.scss';
 
+import Next from '../assets/arrow.svg';
+
 // eslint-disable-next-line react/prop-types
 function Details() {
   const location = useLocation();
@@ -48,7 +50,22 @@ function Details() {
         desc={desc}
         stats={stats}
       />
-      <Link to={`/${link}`} state={{ pokemon: nextPokemon }}>poximo</Link>
+      <div className={Style.details_pagination}>
+        <Link
+          to={`/${link}`}
+          state={{ pokemon: nextPokemon }}
+          className={`${Style.details_pagination_arrows} ${Style.transform}`}
+        >
+          <img src={Next} alt="Back" />
+        </Link>
+        <Link
+          to={`/${link}`}
+          state={{ pokemon: nextPokemon }}
+          className={Style.details_pagination_arrows}
+        >
+          <img src={Next} alt="Next" />
+        </Link>
+      </div>
     </div>
   );
 }

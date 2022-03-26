@@ -25,7 +25,7 @@ export default function Hearder({ onclick, AZ }) {
           <p className={Style.classification_text}>
             {AZ === false ? '#' : 'AZ'}
           </p>
-          <img src="./icons/arrow.svg" alt="classification icon" />
+          <img src="./icons/arrow-az.svg" alt="classification icon" />
         </button>
 
       </div>
