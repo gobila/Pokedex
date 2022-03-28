@@ -8,4 +8,37 @@
   &_card{
     background-color: $white;
   }
+  &_pagination{
+    @media screen and (min-width: 0px) {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        margin: auto;
+        justify-content: space-between;
+        left: 0px;
+        right: 0px;
+        top: 140px;
+        z-index: 1;
+        filter: invert(1);
+    }
+    @media screen and (min-width: 768px) {
+      top:180px;
+      width: 90%;
+    }
+    @media screen and (min-width: 1024px) {
+      top:250px;
+    }
+    &_arrows{
+      width: 48px;
+      padding: 5px;
+      img{
+        width: 100%;
+        max-width: 360px;
+      }
+    }
+      }
+
+  .transform{
+    transform: rotate(180deg);
+  }
 }

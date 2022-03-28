@@ -7,7 +7,7 @@ const apiConnect = {
       .then((data) => data.json());
     return response;
   },
-  async getAll(limit = 9, offset = 0) {
+  async getAll(limit = 12, offset = 0) {
     const url = `${urlBase}pokemon?limit=${limit}&offset=${offset}`;
     const response = await fetch(url)
       .then((data) => data.json());

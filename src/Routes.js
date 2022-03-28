@@ -15,6 +15,7 @@ export default function Routes() {
       <SRoutes>
         <Route element={<Home />} path="/" axact />
         <Route element={<Details />} path="/:pokemon" />
+        <Route element={<Details />} path="/:id" />
       </SRoutes>
     </BrowserRouter>
   );
