@@ -23,7 +23,6 @@ function Details() {
     const getSpecie = await connection.getSpecie(id);
     setDesc(getSpecie.flavor_text_entries[0].flavor_text);
   }
-  console.log(types);
   useEffect(async () => {
     getPokemonSpecie();
     const last = await connection.getPokemon(id - 1);
