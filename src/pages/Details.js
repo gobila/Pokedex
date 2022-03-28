@@ -1,16 +1,12 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../App.css';
 import Card from '../components/Card';
-import TagType from '../components/TagType';
 import apiConnect from '../service/apiConnect';
 import '../theme/global.scss';
 import Style from './Styles/Details.module.scss';
-
 import Next from '../assets/arrow.svg';
 
-// eslint-disable-next-line react/prop-types
 function Details() {
   const location = useLocation();
   const { pokemon } = location.state;
@@ -21,22 +17,20 @@ function Details() {
   const move = [moves[0].move.name, moves[2].move.name];
   const connection = apiConnect;
   const [nextPokemon, setNextPokemon] = useState();
+  const [lastPokemon, setLastPokemon] = useState();
 
   async function getPokemonSpecie() {
     const getSpecie = await connection.getSpecie(id);
     setDesc(getSpecie.flavor_text_entries[0].flavor_text);
   }
-  async function getNext() {
+  console.log(types);
+  useEffect(async () => {
+    getPokemonSpecie();
+    const last = await connection.getPokemon(id - 1);
     const next = await connection.getPokemon(id + 1);
     setNextPokemon(next);
-  }
-  useEffect(() => {
-    getPokemonSpecie();
-    getNext();
+    setLastPokemon(last);
   }, [pokemon]);
-  console.log(nextPokemon);
-  const link = id + 1;
-
   return (
     <div className={Style.details}>
       <Card
@@ -51,20 +45,25 @@ function Details() {
         stats={stats}
       />
       <div className={Style.details_pagination}>
-        <Link
-          to={`/${link}`}
-          state={{ pokemon: nextPokemon }}
-          className={`${Style.details_pagination_arrows} ${Style.transform}`}
-        >
-          <img src={Next} alt="Back" />
-        </Link>
-        <Link
-          to={`/${link}`}
-          state={{ pokemon: nextPokemon }}
-          className={Style.details_pagination_arrows}
-        >
-          <img src={Next} alt="Next" />
-        </Link>
+        {lastPokemon ? (
+          <Link
+            to={`/${lastPokemon.name}`}
+            state={{ pokemon: lastPokemon }}
+            className={`${Style.details_pagination_arrows} ${Style.transform}`}
+          >
+            <img src={Next} alt="Back" />
+          </Link>
+        ) : ''}
+
+        {nextPokemon ? (
+          <Link
+            to={`/${nextPokemon.name}`}
+            state={{ pokemon: nextPokemon }}
+            className={`${Style.details_pagination_arrows}`}
+          >
+            <img src={Next} alt="Back" />
+          </Link>
+        ) : ''}
       </div>
     </div>
   );
