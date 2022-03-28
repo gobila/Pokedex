@@ -40,6 +40,7 @@ function Home() {
   // END ORDERED
   async function getAllPokemon() {
     try {
+      // number os pokemon 897 (pokedex kalos)
       const data = await connect.getAll(15, 15 * page);
       const promises = data.results.map(async (item) => connect.getPokemon(item.name));
       const results = await Promise.all(promises);
@@ -62,7 +63,6 @@ function Home() {
   }
   useEffect(async () => {
     getAllPokemon();
-    console.log(pokemonData);
   }, [page]);
   // setando a pagina
   // useEffect(() => {
