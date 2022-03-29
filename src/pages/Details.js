@@ -30,7 +30,6 @@ function Details() {
     setNextPokemon(next);
     setLastPokemon(last);
   }, [pokemon]);
-  console.log(move);
   return (
     <div className={Style.details}>
       <Card
