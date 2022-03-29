@@ -11,7 +11,7 @@ export default function Card({
   id, name, imgs, types, weight, height, moves, stats, desc,
 }) {
   return (
-    <div className={` ${Style.card_container} type-${types[0].type.name}`}>
+    <div className={` ${Style.card_container} `}>
       <CardHearder
         name={name}
         ndex={id}

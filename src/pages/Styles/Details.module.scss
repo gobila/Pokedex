@@ -3,8 +3,13 @@
 .details {
   text-align: center;
   display: flex;
+  justify-content: center;
   flex: 1;
   min-height: 100vh;
+  background-position: 97% 5%;
+  background-blend-mode: screen;
+  background-size: 35%;
+  background-image: url('../../assets/Pokeball.svg');
   &_card{
     background-color: $white;
   }
@@ -13,6 +18,7 @@
         display: flex;
         position: absolute;
         width: 100%;
+        max-width: 1440px;
         margin: auto;
         justify-content: space-between;
         left: 0px;

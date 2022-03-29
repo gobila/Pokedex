@@ -17,17 +17,29 @@
     align-items: center;
   }
   &_text{
-    width: 20%;
-    text-align: right;
-    text-transform: uppercase;
-    // padding: 2%;
-    margin-right: 2%;
+    @media screen and (min-width: 0px){
+      width: 25%;
+      text-align: right;
+      text-transform: uppercase;
+      margin-right: 2%;
+    }
+    @media screen and (min-width: 768px){
+      width: 10%;
+    }
+    @media screen and (min-width: 1440px){
+      width: 5%;
+    }
   }
   &_number{
-    width: 16%;
-    margin: 0px;
-    text-transform: capitalize;
-    border-left: solid $light-gray 2px;
+    @media screen and (min-width: 0px){
+      width: 16%;
+      margin: 0px;
+      text-transform: capitalize;
+      border-left: solid $light-gray 2px;
+    }
+    @media screen and (min-width: 768px){
+      width: 10%;
+    }
   }
   &_bar{
     width: 64%;
