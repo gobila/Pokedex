@@ -14,7 +14,7 @@ function Details() {
   const {
     id, name, sprites, types, weight, height, moves, stats,
   } = pokemon;
-  const move = [moves[0].move.name, moves[2].move.name];
+  const move = moves.length > 1 ? [moves[0].move.name, moves[2].move.name] : [moves[0].move.name];
   const connection = apiConnect;
   const [nextPokemon, setNextPokemon] = useState();
   const [lastPokemon, setLastPokemon] = useState();
@@ -30,6 +30,7 @@ function Details() {
     setNextPokemon(next);
     setLastPokemon(last);
   }, [pokemon]);
+  console.log(move);
   return (
     <div className={Style.details}>
       <Card
