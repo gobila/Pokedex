@@ -6,10 +6,7 @@
     display: flex;
     flex-direction:column;
     flex: 1;
-    background-position: 97% 5%;
-    background-blend-mode: screen;
-    background-size: 35%;
-    background-image: url('../../assets/Pokeball.svg');
+    max-width: 1440px;
     padding: 2%;
   }
   &_info{

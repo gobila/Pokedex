@@ -31,7 +31,7 @@ function Details() {
     setLastPokemon(last);
   }, [pokemon]);
   return (
-    <div className={Style.details}>
+    <div className={`${Style.details} type-${types[0].type.name}`}>
       <Card
         name={name}
         id={id}
