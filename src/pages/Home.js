@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
@@ -10,14 +9,11 @@ import Style from './Styles/Home.module.scss';
 
 import '../components/PokeBox/style.scss';
 import Hearder from '../components/Hearder';
-import Pagination from '../components/Pagination';
 
 function Home() {
-  const [types, setTypes] = useState();
   const [toggleAZ, setToggleAZ] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [pokemonData, setPokemonData] = useState([]);
-  const [pokemonList, setPokemonList] = useState([]);
   const [page, setPage] = useState(0);
   const connect = apiConnect;
   // ORDERED
@@ -50,31 +46,24 @@ function Home() {
       console.error(error);
     }
   }
-  async function getPokemon() {
-    getAllPokemon();
-    const list = pokemonList.map(async (item) => connect.getPokemon(item.name));
-    const results = await Promise.all(list);
-    setPokemonData(results);
-  }
-  async function getTypes() {
-    getAllPokemon();
-    const typesData = await connect.getTypes();
-    setTypes(typesData.results);
-  }
+
   useEffect(async () => {
     getAllPokemon();
   }, [page]);
   // setando a pagina
-  // useEffect(() => {
-  //   const intersectionObserver = new IntersectionObserver((entries) => {
-  //     if (entries.some((entry) => entry.isIntersecting)) {
-  //       setPage((currentValue) => currentValue + 1);
-  //     }
-  //   });
-  //   intersectionObserver.observe(document.querySelector('#sentinela'));
-  //   return () => intersectionObserver.disconnect();
-  // }, []);
-  console.log(pokemonList);
+  useEffect(() => {
+    if (isLoading === false) {
+      console.log(isLoading);
+      const intersectionObserver = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setPage((currentValue) => currentValue + 1);
+        }
+      });
+      intersectionObserver.observe(document.querySelector('#sentinela'));
+      return () => intersectionObserver.disconnect();
+    }
+    return '';
+  }, [isLoading]);
   return (
     <div className="App">
       <Hearder onclick={Click} AZ={toggleAZ} />
@@ -93,14 +82,16 @@ function Home() {
           </Link>
         ))}
       </div>
+      {isLoading === true ? <p>CARREGANDO</p> : ''}
 
-      <Pagination next={() => setPage(page + 1)} />
-      {/* {pokemonData.length < 1003
+      {pokemonData.length <= 897
       && (
-      <div display="flex" flexDirection="column" alignItems="center" id="sentinela">
-        <p tag="h3" variant="subTitle">Estamos buscando novas fofocas para você</p>
-      </div>
-      )} */}
+        <div display="flex" flexDirection="column" alignItems="center" id="sentinela">
+          <p>
+            CARREGANDO
+          </p>
+        </div>
+      )}
     </div>
   );
 }
