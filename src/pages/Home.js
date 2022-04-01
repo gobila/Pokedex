@@ -66,7 +66,7 @@ function Home() {
   }, [isLoading]);
   return (
     <div className="App">
-      <Hearder onclick={Click} AZ={toggleAZ} />
+      <Hearder onclick={Click} AZ={toggleAZ} list={pokemonData} />
       <div className="AppContainer">
         {pokemonData.map((item) => (
           <Link
