@@ -53,7 +53,6 @@ function Home() {
   // setando a pagina
   useEffect(() => {
     if (isLoading === false) {
-      console.log(isLoading);
       const intersectionObserver = new IntersectionObserver((entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
           setPage((currentValue) => currentValue + 1);

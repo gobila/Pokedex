@@ -6,7 +6,7 @@ import Logo from '../../assets/Pokeball.svg';
 
 export default function Hearder({ onclick, AZ, list }) {
   const [input, setInput] = useState();
-  const [filtered, setFiltered] = useState();
+  const [filtered, setFiltered] = useState([]);
   const namelist = list.map((i) => i.name);
 
   const handleChange = (e) => {
@@ -14,7 +14,7 @@ export default function Hearder({ onclick, AZ, list }) {
   };
   useEffect(() => {
     const fil = namelist.filter((i) => i.indexOf(input) > -1);
-    console.log('fil', fil);
+    setFiltered(fil);
   }, [input]);
 
   return (
@@ -44,6 +44,7 @@ export default function Hearder({ onclick, AZ, list }) {
           className={Style.hearder_search_input}
           type="text"
           placeholder="Procurar"
+          list="pokemon_list"
         />
         <button
           aria-label="Close"
@@ -51,6 +52,11 @@ export default function Hearder({ onclick, AZ, list }) {
           type="button"
           onClick={() => setInput('')}
         />
+        <datalist id="pokemon_list">
+          {filtered.map((i) => (
+            <option>{i}</option>
+          ))}
+        </datalist>
       </form>
     </div>
   );
