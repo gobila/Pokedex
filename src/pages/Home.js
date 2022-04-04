@@ -14,19 +14,21 @@ function Home() {
   const [toggleAZ, setToggleAZ] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [pokemonData, setPokemonData] = useState([]);
+  const [pokemons, setPokemons] = useState([]);
   const [page, setPage] = useState(0);
+  const [input, setInput] = useState('');
   const connect = apiConnect;
   // ORDERED
   const Click = () => {
     setToggleAZ(!toggleAZ);
     if (toggleAZ === false) {
-      setPokemonData(pokemonData.sort((a, b) => {
+      setPokemons(pokemons.sort((a, b) => {
         if (a.name < b.name) return -1;
         if (a.name > b.name) return 1;
         return 0;
       }));
     } if (toggleAZ === true) {
-      setPokemonData(pokemonData.sort((a, b) => {
+      setPokemons(pokemons.sort((a, b) => {
         if (a.id < b.id) return -1;
         if (a.id > b.id) return 1;
         return 0;
@@ -34,6 +36,17 @@ function Home() {
     }
   };
   // END ORDERED
+  const handleChange = (e) => {
+    setInput(e.target.value);
+    setIsLoading(true);
+    if (e.target.value === '') {
+      setIsLoading(false);
+      setPokemons(pokemonData);
+    }
+  };
+  useEffect(() => {
+    setPokemons(pokemonData.filter((i) => i.name.indexOf(input) > -1));
+  }, [input]);
   async function getAllPokemon() {
     try {
       // number os pokemon 897 (pokedex kalos)
@@ -48,12 +61,12 @@ function Home() {
   }
 
   useEffect(async () => {
+    setPokemons(pokemonData);
     getAllPokemon();
   }, [page]);
   // setando a pagina
   useEffect(() => {
     if (isLoading === false) {
-      console.log(isLoading);
       const intersectionObserver = new IntersectionObserver((entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
           setPage((currentValue) => currentValue + 1);
@@ -64,11 +77,23 @@ function Home() {
     }
     return '';
   }, [isLoading]);
+
   return (
     <div className="App">
-      <Hearder onclick={Click} AZ={toggleAZ} />
+      <Hearder
+        onclick={Click}
+        AZ={toggleAZ}
+        list={pokemonData}
+        handleChange={handleChange}
+        input={input}
+        close={() => {
+          setInput('');
+          setIsLoading(false);
+        }}
+        filtered={pokemons}
+      />
       <div className="AppContainer">
-        {pokemonData.map((item) => (
+        {pokemons.map((item) => (
           <Link
             className={Style.Home_link}
             key={item.id}
@@ -82,8 +107,6 @@ function Home() {
           </Link>
         ))}
       </div>
-      {isLoading === true ? <p>CARREGANDO</p> : ''}
-
       {pokemonData.length <= 897
       && (
         <div display="flex" flexDirection="column" alignItems="center" id="sentinela">

@@ -1,15 +1,25 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Style from './style.module.scss';
 import Logo from '../../assets/Pokeball.svg';
 
-export default function Hearder({ onclick, AZ }) {
-  const [input, setInput] = useState();
+export default function Hearder({
+  onclick, AZ, list, handleChange, input, close, filtered,
+}) {
+  // const [input, setInput] = useState();
+  // const [filtered, setFiltered] = useState([]);
+  // const namelist = list.map((i) => i.name);
 
-  const handleChange = (e) => {
-    setInput(e.target.value);
-  };
+  // const handleChange = (e) => {
+  //   setInput(e.target.value);
+  // };
+  // useEffect(() => {
+  //   const fil = namelist.filter((i) => i.indexOf(input) > -1);
+  //   setFiltered(fil);
+  // }, [input]);
+
   return (
     <div className={Style.hearder_container}>
       <div className={Style.hearder_title}>
@@ -37,13 +47,19 @@ export default function Hearder({ onclick, AZ }) {
           className={Style.hearder_search_input}
           type="text"
           placeholder="Procurar"
+          list="pokemon_list"
         />
         <button
           aria-label="Close"
           className={Style.hearder_search_button}
           type="button"
-          onClick={() => setInput('')}
+          onClick={close}
         />
+        <datalist id="pokemon_list">
+          {filtered.map((i) => (
+            <option style={{ background: 'red' }}>{i.name}</option>
+          ))}
+        </datalist>
       </form>
     </div>
   );
@@ -52,4 +68,5 @@ export default function Hearder({ onclick, AZ }) {
 Hearder.propTypes = {
   onclick: PropTypes.func.isRequired,
   AZ: PropTypes.bool.isRequired,
+  list: PropTypes.objectOf.isRequired,
 };
