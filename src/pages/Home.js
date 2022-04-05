@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
 import PokeBox from '../components/PokeBox';
@@ -9,6 +9,7 @@ import Style from './Styles/Home.module.scss';
 
 import '../components/PokeBox/style.scss';
 import Hearder from '../components/Hearder';
+import { UserContext } from '../service/Context';
 
 function Home() {
   const [toggleAZ, setToggleAZ] = useState(false);
@@ -18,6 +19,8 @@ function Home() {
   const [page, setPage] = useState(0);
   const [input, setInput] = useState('');
   const connect = apiConnect;
+  const { pokeContext } = useContext(UserContext);
+
   // ORDERED
   const Click = () => {
     setToggleAZ(!toggleAZ);
@@ -80,17 +83,25 @@ function Home() {
 
   return (
     <div className="App">
+      <button
+        type="button"
+        onClick={() => {
+          console.log(pokeContext);
+        }}
+      >
+        entrar
+      </button>
       <Hearder
         onclick={Click}
         AZ={toggleAZ}
-        list={pokemonData}
+        list={pokeContext}
         handleChange={handleChange}
         input={input}
         close={() => {
           setInput('');
           setIsLoading(false);
         }}
-        filtered={pokemons}
+        filtered={pokeContext}
       />
       <div className="AppContainer">
         {pokemons.map((item) => (

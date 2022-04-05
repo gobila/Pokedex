@@ -6,7 +6,13 @@ import Style from './style.module.scss';
 import Logo from '../../assets/Pokeball.svg';
 
 export default function Hearder({
-  onclick, AZ, list, handleChange, input, close, filtered,
+  onclick,
+  AZ,
+  handleChange,
+  input,
+  close,
+  filtered,
+  list,
 }) {
   // const [input, setInput] = useState();
   // const [filtered, setFiltered] = useState([]);
@@ -57,7 +63,7 @@ export default function Hearder({
         />
         <datalist id="pokemon_list">
           {filtered.map((i) => (
-            <option style={{ background: 'red' }}>{i.name}</option>
+            <option key={i.name} style={{ background: 'red' }}>{i.name}</option>
           ))}
         </datalist>
       </form>
