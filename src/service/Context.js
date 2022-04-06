@@ -13,13 +13,11 @@ const UserContext = createContext();
 // eslint-disable-next-line react/prop-types
 function UserContextProvider({ children }) {
   // the value that will be given to the context
-  const [pokeContext, SetpokeContext] = useState(0);
+  const [pokeContext, SetpokeContext] = useState([0]);
 
   // fetch a user from a fake backend API
   useEffect(() => {
     const fetchUser = async () => {
-      // this would usually be your own backend, or localStorage
-      // for example
       try {
         // number os pokemon 897 (pokedex kalos)
         const data = await apiConnect.getAll(898, 0);

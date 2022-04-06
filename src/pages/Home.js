@@ -20,7 +20,6 @@ function Home() {
   const [input, setInput] = useState('');
   const connect = apiConnect;
   const { pokeContext } = useContext(UserContext);
-
   // ORDERED
   const Click = () => {
     setToggleAZ(!toggleAZ);
@@ -101,7 +100,6 @@ function Home() {
           setInput('');
           setIsLoading(false);
         }}
-        filtered={pokeContext}
       />
       <div className="AppContainer">
         {pokemons.map((item) => (

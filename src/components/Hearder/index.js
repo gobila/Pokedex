@@ -1,7 +1,5 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import PropTypes, { object } from 'prop-types';
 import Style from './style.module.scss';
 import Logo from '../../assets/Pokeball.svg';
 
@@ -11,21 +9,9 @@ export default function Hearder({
   handleChange,
   input,
   close,
-  filtered,
   list,
 }) {
-  // const [input, setInput] = useState();
-  // const [filtered, setFiltered] = useState([]);
-  // const namelist = list.map((i) => i.name);
-
-  // const handleChange = (e) => {
-  //   setInput(e.target.value);
-  // };
-  // useEffect(() => {
-  //   const fil = namelist.filter((i) => i.indexOf(input) > -1);
-  //   setFiltered(fil);
-  // }, [input]);
-
+  console.log(list);
   return (
     <div className={Style.hearder_container}>
       <div className={Style.hearder_title}>
@@ -62,7 +48,7 @@ export default function Hearder({
           onClick={close}
         />
         <datalist id="pokemon_list">
-          {filtered.map((i) => (
+          {list.map((i) => (
             <option key={i.name} style={{ background: 'red' }}>{i.name}</option>
           ))}
         </datalist>
@@ -74,5 +60,11 @@ export default function Hearder({
 Hearder.propTypes = {
   onclick: PropTypes.func.isRequired,
   AZ: PropTypes.bool.isRequired,
-  list: PropTypes.objectOf.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired,
+  input: PropTypes.string.isRequired,
+  list: PropTypes.objectOf({ x: object }),
+};
+Hearder.defaultProps = {
+  list: {},
 };
