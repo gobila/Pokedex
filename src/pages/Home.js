@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
 import PokeBox from '../components/PokeBox';
@@ -9,8 +10,10 @@ import Style from './Styles/Home.module.scss';
 
 import '../components/PokeBox/style.scss';
 import Hearder from '../components/Hearder';
+import { UserContext } from '../service/Context';
 
 function Home() {
+  const { pokeContext } = useContext(UserContext);
   const [toggleAZ, setToggleAZ] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [pokemonData, setPokemonData] = useState([]);
@@ -18,6 +21,8 @@ function Home() {
   const [page, setPage] = useState(0);
   const [input, setInput] = useState('');
   const connect = apiConnect;
+
+  const limit = page === 0 ? 15 : 15 * page;
   // ORDERED
   const Click = () => {
     setToggleAZ(!toggleAZ);
@@ -36,34 +41,28 @@ function Home() {
     }
   };
   // END ORDERED
+  // FILTER
   const handleChange = (e) => {
-    setInput(e.target.value);
     setIsLoading(true);
+    setInput(e.target.value);
     if (e.target.value === '') {
       setIsLoading(false);
-      setPokemons(pokemonData);
+      setPokemons(pokeContext.slice(0, limit));
     }
   };
   useEffect(() => {
-    setPokemons(pokemonData.filter((i) => i.name.indexOf(input) > -1));
-  }, [input]);
-  async function getAllPokemon() {
-    try {
-      // number os pokemon 897 (pokedex kalos)
-      const data = await connect.getAll(15, 15 * page);
-      const promises = data.results.map(async (item) => connect.getPokemon(item.name));
-      const results = await Promise.all(promises);
-      setPokemonData([...pokemonData, ...results]);
-      setIsLoading(false);
-    } catch (error) {
-      console.error(error);
+    if (pokeContext.length > 1 && input !== '') {
+      setPokemons(pokeContext.filter((i) => i.name.indexOf(input) > -1));
     }
-  }
+  }, [input]);
+  // END FILTER
 
-  useEffect(async () => {
-    setPokemons(pokemonData);
-    getAllPokemon();
-  }, [page]);
+  useEffect(() => {
+    if (pokeContext.length > 1) {
+      setIsLoading(false);
+      setPokemons(pokeContext.slice(0, limit));
+    }
+  }, [pokeContext, page]);
   // setando a pagina
   useEffect(() => {
     if (isLoading === false) {
@@ -83,14 +82,13 @@ function Home() {
       <Hearder
         onclick={Click}
         AZ={toggleAZ}
-        list={pokemonData}
+        list={pokeContext}
         handleChange={handleChange}
         input={input}
         close={() => {
           setInput('');
           setIsLoading(false);
         }}
-        filtered={pokemons}
       />
       <div className="AppContainer">
         {pokemons.map((item) => (
@@ -107,13 +105,19 @@ function Home() {
           </Link>
         ))}
       </div>
-      {pokemonData.length <= 897
+      {pokemons.length <= 897
       && (
         <div display="flex" flexDirection="column" alignItems="center" id="sentinela">
           <p>
             CARREGANDO
           </p>
         </div>
+        // <div display="flex" flexDirection="column" alignItems="center" id="sentinela">
+        //   <p>
+        //     CARREGANDO
+        //   </p>
+        // </div>
+
       )}
     </div>
   );

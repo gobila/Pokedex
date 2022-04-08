@@ -1,17 +1,19 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, {
+  useContext, useEffect, useMemo, useState,
+} from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import PokeBox from './components/PokeBox';
-import TagType from './components/TagType';
 import Routes from './Routes';
-import apiConnect from './service/apiConnect';
+import { UserContext, UserContextProvider } from './service/Context';
 
 import './theme/global.scss';
 
 function App() {
   return (
-    <Routes />
+    <UserContextProvider>
+      <Routes />
+    </UserContextProvider>
   );
 }
 
