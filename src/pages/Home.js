@@ -61,7 +61,6 @@ function Home() {
     if (pokeContext.length > 1) {
       setIsLoading(false);
       setPokemons(pokeContext.slice(0, limit));
-      console.log(page);
     }
   }, [pokeContext, page]);
   // setando a pagina
@@ -80,19 +79,6 @@ function Home() {
 
   return (
     <div className="App">
-      <button
-        type="button"
-        onClick={() => {
-          const bla = [];
-          for (let i = page; i < 15 * page; i += 1) {
-            bla.push(pokeContext[i]);
-          }
-          console.log('bla', pokemons.length);
-          console.log(page);
-        }}
-      >
-        entrar
-      </button>
       <Hearder
         onclick={Click}
         AZ={toggleAZ}

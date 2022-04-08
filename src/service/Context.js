@@ -1,6 +1,6 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 import React, {
-  createContext, useCallback, useEffect, useMemo, useState,
+  createContext, useEffect, useMemo, useState,
 } from 'react';
 import apiConnect from './apiConnect';
 
