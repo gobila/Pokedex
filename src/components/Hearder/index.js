@@ -11,7 +11,6 @@ export default function Hearder({
   close,
   list,
 }) {
-  console.log(list);
   return (
     <div className={Style.hearder_container}>
       <div className={Style.hearder_title}>
