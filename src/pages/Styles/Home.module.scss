@@ -1,5 +1,8 @@
 .Home{
   &_link{
     text-decoration: none;
+    @media screen and (min-width: 0px) {
+      width: 32%;
+    }
   }
 }

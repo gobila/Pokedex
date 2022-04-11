@@ -1,9 +1,7 @@
 @import '../../theme/colors.scss';
-
+@import '../../theme/typography.scss';
 
 .pokebox{
-  // width: 27%;
-  // height: 164px;
   margin: 8px;
   border: 2px solid;
   border-radius: 8px;
@@ -13,7 +11,14 @@
     text-align: right;
     padding: 4px 8px;
     p{
-      margin: 0px;
+      @media screen and (min-width: 0px) {
+        margin: 0px;
+        font-size: $size-8;
+      }
+      @media screen and (min-width: 425px) {
+        margin: 0px;
+        font-size: $size-12;
+      }
     }
   }
   &-img{
@@ -21,11 +26,26 @@
     margin: auto;
   }
   &-name{
-    padding: 8px;
-    p{
-      margin: 0px;
-      color: $white;
-    };
+    @media screen and (min-width: 0px) {
+      padding: 4px;
+      p{
+        margin: 0px;
+        color: $white;
+        font-size: $size-10;
+        text-transform: capitalize;
+      }
+    }
+    @media screen and (min-width: 425px) {
+      padding: 8px;
+      p{
+        font-size: $size-12;
+      }
+    }
+    @media screen and (min-width:768px) {
+      p{
+        font-size: $size-16;
+      }
+    }
   }
 }
 @include types;
