@@ -46,9 +46,9 @@ export default function Hearder({
           type="button"
           onClick={close}
         />
-        <datalist id="pokemon_list">
+        <datalist id="pokemon_list" className={Style.hearder_datalist}>
           {list.map((i) => (
-            <option key={i.name} style={{ background: 'red' }}>{i.name}</option>
+            <option key={i.name}>{i.name}</option>
           ))}
         </datalist>
       </form>

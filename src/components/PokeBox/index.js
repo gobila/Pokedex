@@ -34,7 +34,7 @@ export default function PokeBox({ pokemon }) {
         className="pokebox-img"
       />
       <div className={`pokebox-name type-${pokemon.types[0].type.name}`}>
-        <p className="poppins-s16" tag="p">{name}</p>
+        <p className="">{name}</p>
       </div>
     </div>
   );

@@ -97,7 +97,7 @@ function Home() {
             key={item.id}
             to={`/${item.name}`}
             state={{ pokemon: item }}
-            style={{ width: '27%' }}
+            // style={{ width: '27%' }}
           >
             <PokeBox
               pokemon={item}

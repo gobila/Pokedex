@@ -2,6 +2,7 @@ $size-8: 8px;
 $size-10: 10px;
 $size-12: 12px;
 $size-14: 14px;
+$size-16: 16px;
 $size-24: 24px;
 
 $line-12: 12px;
@@ -30,6 +31,10 @@ $line-32: 32px;
     }
     &-s14{
       font-size: $size-14;
+      line-height: $line-16;
+    }
+    &-s16{
+      font-size: $size-16;
       line-height: $line-16;
     }
     &-s24{
